@@ -1,0 +1,34 @@
+admin <- 1234
+user <- 7878
+OUTPUT "***************************************************"
+OUTPUT "           Please Chose your option                "
+OUTPUT "       If you are a user please press 1            "
+OUTPUT "       If you are a admin please press 2           "
+OUTPUT "***************************************************"
+val <- int(input())
+IF val==1:
+    OUTPUT "*****************************************"
+    OUTPUT "    Enter your user name nad password    "
+    name <- input("    Enter your name   :  ")
+    pas <- int(input("    ENter your password  :   "))
+    IF pas==user:
+        OUTPUT "    Welcome {} in Loan managment system".format(name)
+                                                        ENDFOR
+        call(["    python", "LoanMntProject.py"])
+    ELSE:
+        OUTPUT "    You enter a wrong password"
+    ENDIF
+ELSEIF val==2:
+    OUTPUT "*****************************************"
+    OUTPUT "    Enter your admin name AND password"
+    name <- input("    Enter your name   :  ")
+    pas <- int(input("    ENter your password  :   "))
+    IF pas==admin:
+        OUTPUT "    Welcome {} in Loan managment system".format(name)
+                                                        ENDFOR
+        call(["    python", "LoanMntProject.py"])
+    ELSE:
+        OUTPUT "    You enter a wrong password"
+    ENDIF
+ELSE:
+    OUTPUT "Wrong Input"

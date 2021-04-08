@@ -1,0 +1,249 @@
+CLASS Customer:
+    FUNCTION __init__(self,root):
+         root=root
+         root.title("Loan Management System,")
+         root.geometry("1350x720+0+0")
+        title=Label( root,text="Loan Management System",font=("times new romman",40,'bold'),bd=10,relief=GROOVE,bg='yellow',fg='red')
+        title.pack(side=TOP,fill=X)
+    ENDFUNCTION
+
+#=======================Variable==========================
+         loalId=StringVar()
+         name=StringVar()
+         mob=StringVar()
+         aadhar=StringVar()
+         add=StringVar()
+         pin=StringVar()
+         amount=StringVar()
+         year=StringVar()
+         rate=StringVar()
+         mpay=StringVar()
+         tpay=StringVar()
+#=====================Details of Customer=====================
+        Detail_F <- Frame( root, bd=4, relief=RIDGE,bg='powderblue')
+        Detail_F.place(x=10, y=90, width=520, height=620)
+        lbl_id <- Label(Detail_F, text="Loan Id",font=("times new romman", 18, 'bold'))
+        lbl_id.grid(row=0, column=0, pady=10, padx=20, sticky="w")
+        txt_id <- Entry(Detail_F, font=("times new rommon", 15, 'bold'), bd=3,relief=GROOVE,textvariable= loalId)
+        txt_id.grid(row=0, column=1, pady=10, sticky="w")
+        lbl_name <- Label(Detail_F, text="Full Name",font=("times new romman", 18, 'bold'))
+        lbl_name.grid(row=1, column=0, pady=10, padx=20, sticky="w")
+        txt_name <- Entry(Detail_F, font=("times new rommon", 15, 'bold'), bd=3,relief=GROOVE,textvariable= name)
+        txt_name.grid(row=1, column=1, pady=10, sticky="w")
+        lbl_mob <- Label(Detail_F, text="Mobile No.",font=("times new romman", 18, 'bold'))
+        lbl_mob.grid(row=2, column=0, pady=10, padx=20, sticky="w")
+        txt_mob <- Entry(Detail_F, font=("times new rommon", 15, 'bold'), bd=3,relief=GROOVE,textvariable= mob)
+        txt_mob.grid(row=2, column=1, pady=10, sticky="w")
+        lbl_aa <- Label(Detail_F, text="Aadhar No.",font=("times new romman", 18, 'bold'))
+        lbl_aa.grid(row=3, column=0, pady=10, padx=20, sticky="w")
+        txt_aa <- Entry(Detail_F, font=("times new rommon", 15, 'bold'), bd=3,relief=GROOVE,textvariable= aadhar)
+        txt_aa.grid(row=3, column=1, pady=10, sticky="w")
+        lbl_add <- Label(Detail_F, text="Address", font=("times new romman", 18, 'bold'))
+        lbl_add.grid(row=4, column=0, pady=10, padx=20, sticky="w")
+        txt_add <- Entry(Detail_F, font=("times new rommon", 15, 'bold'), bd=3, relief=GROOVE,textvariable= add)
+        txt_add.grid(row=4, column=1, pady=10, sticky="w")
+        lbl_pin <- Label(Detail_F, text="PinCode", font=("times new romman", 18, 'bold'))
+        lbl_pin.grid(row=5, column=0, pady=10, padx=20, sticky="w")
+        txt_pin <- Entry(Detail_F, font=("times new rommon", 15, 'bold'), bd=3, relief=GROOVE,textvariable= pin)
+        txt_pin.grid(row=5, column=1, pady=10, sticky="w")
+        lbl_amount <- Label(Detail_F, text="Amount of Loan", font=("times new romman", 18, 'bold'))
+        lbl_amount.grid(row=6, column=0, pady=10, padx=20, sticky="w")
+        txt_amount <- Entry(Detail_F, font=("times new rommon", 15, 'bold'), bd=3, relief=GROOVE,textvariable= amount)
+        txt_amount.grid(row=6, column=1, pady=10, sticky="w")
+        lbl_time <- Label(Detail_F, text="Number of years", font=("times new romman", 18, 'bold'))
+        lbl_time.grid(row=7, column=0, pady=10, padx=20, sticky="w")
+        txt_time <- Entry(Detail_F, font=("times new rommon", 15, 'bold'), bd=3, relief=GROOVE,textvariable= year)
+        txt_time.grid(row=7, column=1, pady=10, sticky="w")
+        lbl_rate <- Label(Detail_F, text="Interest Rate", font=("times new romman", 18, 'bold'))
+        lbl_rate.grid(row=8, column=0, pady=10, padx=20, sticky="w")
+        txt_rate <- Entry(Detail_F, font=("times new rommon", 15, 'bold'), bd=3, relief=GROOVE,textvariable= rate)
+        txt_rate.grid(row=8, column=1, pady=10, sticky="w")
+        lbl_Mp <- Label(Detail_F, text="Monthly Payment", font=("times new romman", 18, 'bold'))
+        lbl_Mp.grid(row=9, column=0, pady=10, padx=20, sticky="w")
+        txt_Mp <- Entry(Detail_F, font=("times new rommon", 15, 'bold'), bd=3, relief=GROOVE,state=DISABLED,textvariable= mpay)
+        txt_Mp.grid(row=9, column=1, pady=10, sticky="w")
+        lbl_tp <- Label(Detail_F, text="Total Payment", font=("times new romman", 18, 'bold'))
+        lbl_tp.grid(row=10, column=0, pady=10, padx=20, sticky="w")
+        txt_tp <- Entry(Detail_F, font=("times new rommon", 15, 'bold'), bd=3, relief=GROOVE,state=DISABLED,textvariable= tpay)
+        txt_tp.grid(row=10, column=1, pady=10, sticky="w")
+#=========================Employee Record======================
+        recordFrame <- Frame( root, bd=5, relief=RIDGE)
+        recordFrame.place(x=535, y=100, width=810, height=530)
+        yscroll <- Scrollbar(recordFrame, orient=VERTICAL)
+         employee_table <- ttk.Treeview(recordFrame, columns=("empId","name","years","rate","Mpayment","Tpayment","mobile")
+                                          , yscrollcommand=yscroll.set)
+        yscroll.pack(side=RIGHT, fill=Y)
+        yscroll.config(command= employee_table.yview)
+         employee_table.heading("empId", text="Employee Id")
+         employee_table.heading("name", text="Name")
+         employee_table.heading("years", text="Number of Years")
+         employee_table.heading("rate", text="Interest Rate")
+         employee_table.heading("Mpayment", text="Monthly Payment")
+         employee_table.heading("Tpayment", text="Total Payment")
+         employee_table.heading("mobile", text="Mobile No.")
+         employee_table['show'] <- 'headings'
+         employee_table.column("empId", width=100)
+         employee_table.column("name", width=100)
+         employee_table.column("years", width=100)
+         employee_table.column("rate", width=100)
+         employee_table.column("Mpayment", width=110)
+         employee_table.column("Tpayment", width=100)
+         employee_table.column("mobile", width=100)
+         employee_table.pack(fill=BOTH, expand=1)
+         fatch_data()
+         employee_table.bind("<ButtonRelease-1>", get_cursor)
+        #======================Buttons================================
+        btnFrame=Frame( root,bd=5,relief=RIDGE)
+        btnFrame.place(x=535,y=630,width=810,height=80)
+        btn1 <- Button(btnFrame, text='Add record', font='arial 18 bold', bg='lime', fg='crimson', width=9,command= addrecord)
+        btn1.grid(row=0, column=0, padx=10, pady=10)
+        btn2 <- Button(btnFrame, text='Update', font='arial 18 bold', bg='lime', fg='crimson', width=9,command= update)
+        btn2.grid(row=0, column=1, padx=8, pady=10)
+        btn3 <- Button(btnFrame, text='Delete', font='arial 18 bold', bg='lime', fg='crimson', width=9,command= delete)
+        btn3.grid(row=0, column=2, padx=8, pady=10)
+        btn4 <- Button(btnFrame, text='Reset', font='arial 18 bold', bg='lime', fg='crimson', width=9,command= reset)
+        btn4.grid(row=0, column=3, padx=8, pady=10)
+        btn5 <- Button(btnFrame, text='Exit', font='arial 18 bold', bg='lime', fg='crimson', width=9,command= exit)
+        btn5.grid(row=0, column=4, padx=7, pady=10)
+#=============================Functions================================
+    FUNCTION total(self):
+        p=int( amount.get())
+        r=int( rate.get())
+        n=int( year.get())
+        t=(p*r*n*12)/100
+        m=(p+t)/(n*12)
+         mpay.set(str(round(m,2)))
+         tpay.set(str(t+p))
+    ENDFUNCTION
+
+    FUNCTION addrecord(self):
+        IF  loalId.get() = '' OR  name.get() = '' OR  mob.get() = '' OR  aadhar.get() = '' OR  add.get() = '' OR self.pin.get()=='':
+            messagebox.showerror('Error', 'Customers Details are must ?')
+        ELSE:
+             total()
+            con <- pymysql.connect(host="localhost", user="root", password="", database="test")
+            cur <- con.cursor()
+            cur.execute("Select * from employee")
+            rows <- cur.fetchall()
+            for row in rows:
+                IF row[0] =  loalId.get():
+                    messagebox.showerror('Error', 'Duplicate entry not allowed')
+                    RETURN
+                ENDIF
+            ENDFOR
+            cur.execute("insert into employee values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)", (
+                 loalId.get(),
+                 name.get(),
+                 year.get(),
+                 rate.get(),
+                 mpay.get(),
+                 tpay.get(),
+                 mob.get(),
+                 aadhar.get(),
+                 add.get(),
+                 pin.get(),
+                 amount.get()))
+            con.commit()
+             fatch_data()
+            con.close()
+        ENDIF
+    ENDFUNCTION
+
+    FUNCTION fatch_data(self):
+        con <- pymysql.connect(host="localhost", user="root", password="", database="test")
+        cur <- con.cursor()
+        cur.execute("Select * from employee")
+        rows <- cur.fetchall()
+        IF len(rows) != 0:
+             employee_table.delete(* employee_table.get_children())
+            for row in rows:
+                 employee_table.insert('', END, values=row)
+        ENDIF
+            ENDFOR
+        con.commit()
+        con.close()
+    ENDFUNCTION
+
+    FUNCTION update(self):
+        IF  loalId.get()=='':
+            messagebox.showerror('Error','Input Information to Update!!')
+                                                  ENDFOR
+        ELSE:
+             total()
+            con <- pymysql.connect(host="localhost", user="root", password="", database="test")
+            cur <- con.cursor()
+            # cur.execute("update employee set Name=%s,Years=%s,Interest_Rate=%s,Mobile_No.=%s,Aadhar_No.=%s,Address=%s,Pincode=%s,Amount_of_loan=%s where Employee_Id=%s",( name.get(),
+            cur.execute("update employee set Name=%s,Years=%s,Interest_Rate=%s,Monthly_Payment=%s,Total_Payment=%s,Mobile_No= %s ,Aadhar_No=%s,Address=%s,Pincode=%s,Amount_of_loan=%s where Employee_Id=%s",( name.get(),
+                                                                                                                                                                          year.get(),
+                                                                                                                                                                         rate.get(),
+                                                                                                                                                                         mpay.get(),
+                                                                                                                                                                         tpay.get(),
+                                                                                                                                                                            mob.get(),
+                                                                                                                                                                           aadhar.get(),
+                                                                                                                                                                           add.get(),
+                                                                                                                                                                           pin.get(),
+                                                                                                                                                                           amount.get(),
+                                                                                                                                                                          loalId.get()))
+            con.commit()
+            con.close()
+             fatch_data()
+             reset()
+        ENDIF
+    ENDFUNCTION
+
+    FUNCTION delete(self):
+        IF  loalId.get()=='':
+            messagebox.showerror('Error','Please enter Employee ID to delete the records')
+        ELSE:
+            con <- pymysql.connect(host="localhost", user="root", password="", database="test")
+            cur <- con.cursor()
+            cur.execute("delete from employee where Employee_Id=%s", loalId.get())
+            con.commit()
+            con.close()
+             fatch_data()
+             reset()
+        ENDIF
+    ENDFUNCTION
+
+    FUNCTION reset(self):
+         loalId.set('')
+         name.set('')
+         mob.set('')
+         aadhar.set('')
+         add.set('')
+         pin.set('')
+         amount.set('')
+         year.set('')
+         rate.set('')
+         mpay.set('')
+         tpay.set('')
+    ENDFUNCTION
+
+    FUNCTION exit(self):
+        IF messagebox.askyesno('Exit',"Do you really want to Exit ?"):
+            root.destroy()
+        ENDIF
+    ENDFUNCTION
+
+    FUNCTION get_cursor(self,ev):
+        cursor_row= employee_table.focus()
+        content= employee_table.item(cursor_row)
+        row=content['values']
+         loalId.set(row[0])
+         name.set(row[1])
+         year.set(row[2])
+         rate.set(row[3])
+         mpay.set(row[4])
+         tpay.set(row[5])
+         mob.set(row[6])
+         aadhar.set(row[7])
+         add.set(row[8])
+         pin.set(row[9])
+         amount.set(row[10])
+    ENDFUNCTION
+
+ENDCLASS
+
+root=Tk()
+obj=Customer(root)
+root.mainloop(
