@@ -10,3 +10,21 @@ This one is for testing and in this project simply used pymysql and tkinter.
 
 **To run this project you need to import the data set and simply run the main file (main.py) **
 
+
+### To Add New Record You Have To Insert Those Information
+
+1. Loan Id
+2. Full Name
+3. Mobile No
+4. Loan Type
+5. Address
+6. PinCode
+7. Amount of Loan
+8. Number of years
+9. Interest Rate
+
+**Then click the (Add record) Button**
+
+### To Delete any user information you need to insert the (Employee Id) number and then click the (Delete) Button
+
+### To update any user information you need to click on that user Row and make change what you want after changing just simply click in the Update Button
